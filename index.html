@@ -43,15 +43,21 @@
 			background-position: center bottom;
 			background-size: auto 65%;
 		}
-		.slide p{
+		.slide p {
 			left: 30px;
 			position: absolute;
 			font-size: 50px;
-			line-height: 70px;
+			line-height: 60px;
 			font-weight: bold;
 			text-align: left;
 			margin: 15px 15px 15px 15px;
 			width: 95%;
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
 		}
 		.slide.black p{
 			left: 30px;
@@ -63,6 +69,12 @@
 			margin: 15px 15px 15px 15px;
 			width: 95%;
 			color: white;
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
 		}
 		.slide img{
 			display: none;
@@ -106,10 +118,30 @@
 			color: #000;
 			background-color: rgba(255,255,255,.75);
 		}
-		.code{
-			color: #808080;
-			font-family: 'Courier New';
-			font-size: 90%;
+		code {
+			  display: inline-block;
+		    border-radius: 5px;
+		    -moz-border-radius: 5px;
+		    -webkit-border-radius: 5px;
+		    border: 1px solid #BCBEC0;
+		    padding: 2px;
+				background-color: #f2f2f2;
+				color: #5b5b5b;
+		    font:20px Monaco,Consolas,"Andale  Mono","DejaVu Sans Mono",monospace;
+				-webkit-touch-callout: default;
+				-webkit-user-select: text;
+				-khtml-user-select: text;
+				-moz-user-select: text;
+				-ms-user-select: text;
+				user-select: text;
+		}
+		h3{
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
 		}
 		.new{
 			width: 100%;
@@ -141,7 +173,7 @@
 </div>
 
 <div class="slide">
-	<p>Today we will walk through the QGIS interface touching on some of the recent upgrades.<br>
+	<p>Today we will walk through the QGIS interface touching on some of the recent upgrades.<br></p>
 </div>
 
 <div class="slide">
@@ -167,13 +199,36 @@
 
 <div class="slide image_bottom">
 	<h3 class="new">New Feature</h3>
-	<p>Let's apply the local coordinate system. Search for 2229. Notice the new preview window.<br>
+	<p>Instead of multiple add data buttons, now there is a consolidated Data Source Manager.<br></p>
+	<img src="images/datamanager.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p>Let's add our County Boundaries first. They are a vector data file (e.g. points, lines, or polygons as a shapefile/geopackage).<br></p>
+	<img src="images/countiesadd.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p>Next we will add a WMS tile layer of aerial imagery.<code>https://map.dfg.ca.gov/arcgis/services/Base_Remote_Sensing/NAIP_2016/ImageServer/WMSServer?</code></p>
+	<img src="images/naip.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<h3 class="new">New Feature</h3>
+	<p>You can now connect live to services from an API!
+	<code>https://opendata.arcgis.com/datasets/4e9a3e5a969a451d9c41b2a0b5981b20_0.geojson</code></p>
+	<img src="images/protocol.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<h3 class="new">New Feature</h3>
+	<p>Let's apply the local coordinate system. Search for 2229. Notice the new preview window.</p>
 	<img src="images/projectionpreview.png"/>
 </div>
 
 <div class="slide image_bottom">
 	<h3 class="new">New Feature</h3>
-	<p>You can have fields auto-update based on an expression. Create an update field and set default to <code class="code">now()</code><br>
+	<p>You can have fields auto-update based on an expression. Create an update field and set default to <code class="code">now()</code></p>
 	<img src="images/autoupdate.png"/>
 </div>
 
@@ -243,7 +298,7 @@
 			}
 		}
 	}
-	document.onclick = function() { go(++current % (slides.length)); };
+	// document.onclick = function() { go(++current % (slides.length)); };
     function fwd() { go(Math.min(slides.length - 1, ++current)); }
     function rev() { go(Math.max(0, --current)); }
     document.onkeydown = function(e) {
