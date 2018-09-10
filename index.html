@@ -50,6 +50,7 @@
 			line-height: 60px;
 			font-weight: bold;
 			text-align: left;
+			color: #232323;
 			margin: 15px 15px 15px 15px;
 			width: 95%;
 			-webkit-touch-callout: none;
@@ -118,6 +119,9 @@
 			color: #000;
 			background-color: rgba(255,255,255,.75);
 		}
+		b{
+			color: black;
+		}
 		code {
 			  display: inline-block;
 		    border-radius: 5px;
@@ -125,6 +129,8 @@
 		    -webkit-border-radius: 5px;
 		    border: 1px solid #BCBEC0;
 		    padding: 2px;
+				margin: 10px;
+				word-break: break-all;
 				background-color: #f2f2f2;
 				color: #5b5b5b;
 		    font:20px Monaco,Consolas,"Andale  Mono","DejaVu Sans Mono",monospace;
@@ -204,13 +210,111 @@
 </div>
 
 <div class="slide image_bottom">
-	<p>Let's add our County Boundaries first. They are a vector data file (e.g. points, lines, or polygons as a shapefile/geopackage).<br></p>
+	<p>Let's add our County Boundaries first. They are a vector data file, so select <b>Vector</b>, find your file, & click <b>Add</b>.<br></p>
 	<img src="images/countiesadd.png"/>
 </div>
 
 <div class="slide image_bottom">
-	<p>Next we will add a WMS tile layer of aerial imagery.<code>https://map.dfg.ca.gov/arcgis/services/Base_Remote_Sensing/NAIP_2016/ImageServer/WMSServer?</code></p>
+	<p>Next we will add a WMS tile layer of aerial imagery. Go to the <b>WMS/WMTS</b> tab.
+	<img src="images/wms1.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p>Click <b>New</b> and enter the <b>Name</b> and <b>URL</b>:
+	<code>https://map.dfg.ca.gov/arcgis/services/Base_Remote_Sensing/NAIP_2016/ImageServer/WMSServer?</code>
+  Click ok.</p>
 	<img src="images/naip.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p>Click <b>Connect</b> and then select the layer and click <b>Add</b>. We're done adding layers for now, so click <b>Close</b>.</p>
+	<img src="images/wmsadd.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p>Your map now has 2 layers. If the NAIP is above Counties, drag it to the bottom of the <b>Layers</b> list.</p>
+	<img src="images/layers.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p>Let's apply the local coordinate system to the map. Click on EPSG in the lower right of your QGIS window.</p>
+	<img src="images/epsg.png"/>
+</div>
+
+<div class="slide black">
+	<p>EPSG stands for European Petroleum Survey Group. As a global inventory of spatial reference systems,
+		it is widely used.</p>
+</div>
+
+<div class="slide image_bottom">
+	<h3 class="new">New Feature</h3>
+	<p>Search for 2229. Notice the new preview window where you can see the usable extent of that projection.</p>
+	<img src="images/projectionpreview.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p>Let's label the counties. Double click County Boundaries in the layers list & select the <b>Label</b> tab.</p>
+	<img src="images/label.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p>Under <b>Text</b>, set the <b>Size</b> to 1500 Meters at Scale.</p>
+	<img src="images/labeltext.png"/>
+</div>
+
+
+<div class="slide image_bottom">
+	<p>Under <b>Formatting, Multiple Lines</b>, set the <b>Wrap on character</b> to be a space and the <b>Alignment</b> to be center.</p>
+	<img src="images/labelformatting.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p>Under <b>Placement</b>, tick <b>Offset from centroid</b>. Under <b>Centroid</b>, tick <b>
+		Whole polygon</b>.Check <b>Force point inside polygon</b>.</p>
+	<img src="images/labelplacement.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p>Under <b>Rendering, Feature Options</b>, check <b>Label every part of multi-part features</b>.</p>
+	<img src="images/label.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p>Now we have labels! But we want more control over our county polygons. The islands are sometimes
+		grouped w/ the mainland.</p>
+	<img src="images/santabarbara.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p>Go to <b>Vector, Geometry Tools, Multipart to Singleparts.</b></p>
+	<img src="images/explode.png"/>
+</div>
+
+<div class="slide black">
+	<p>We're going to save as geopackage. A geopackage is an open data format that uses a SQLite database.</p>
+</div>
+
+<div class="slide black">
+	<p>It's a bit like an Esri geodatabase (but open) and much more powerful than a shapefile.</p>
+</div>
+
+<div class="slide image_bottom">
+	<p>Select the ellipses next to Singlepart and <b>Save to GeoPackage</b>. You will name
+		both the geopackage (database) and the layer.</p>
+	<img src="images/explode2.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<h3 class="new">New Feature</h3>
+	<p>Click <b>Run in Background</b>. This lets you keep working while a process runs.</p>
+	<img src="images/explode2.png"/>
+</div>
+
+
+<div class="slide image_bottom">
+	<h3 class="new">New Feature</h3>
+	<p>You can have fields auto-update based on an expression. Create an update field and set default to <code class="code">now()</code></p>
+	<img src="images/autoupdate.png"/>
 </div>
 
 <div class="slide image_bottom">
@@ -218,18 +322,6 @@
 	<p>You can now connect live to services from an API!
 	<code>https://opendata.arcgis.com/datasets/4e9a3e5a969a451d9c41b2a0b5981b20_0.geojson</code></p>
 	<img src="images/protocol.png"/>
-</div>
-
-<div class="slide image_bottom">
-	<h3 class="new">New Feature</h3>
-	<p>Let's apply the local coordinate system. Search for 2229. Notice the new preview window.</p>
-	<img src="images/projectionpreview.png"/>
-</div>
-
-<div class="slide image_bottom">
-	<h3 class="new">New Feature</h3>
-	<p>You can have fields auto-update based on an expression. Create an update field and set default to <code class="code">now()</code></p>
-	<img src="images/autoupdate.png"/>
 </div>
 
 <div class="slide">
