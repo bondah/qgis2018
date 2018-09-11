@@ -3,8 +3,9 @@
 # Objective
 In this tutorial we will learn:
 * how to add data to QGIS
-* how to edit and analyze data in QGIS
-* how to visualize data in QGIS
+* how to edit & visualize data in QGIS
+* how to analyze data in QGIS
+
 
 We will touch on various improvements found in QGIS version 3.0-3.2.
 
@@ -16,13 +17,3 @@ We are using GIS data from (exercise data is in the data folder):
 
 # Scope
 We aren't going to go in-depth, but we will cover basic usage while highlighting new features.
-
-# Code snippets
-Intersection of tracts and rivers:
-```sql
-SELECT rivers.gnis_name as rivers, count(*) as tracts
-	FROM rivers, tracts
-	WHERE ST_Intersects(rivers.geom, tracts.geom)
-	GROUP BY rivers
-  ORDER BY rivers;
-```
