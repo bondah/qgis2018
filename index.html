@@ -205,12 +205,13 @@
 
 <div class="slide image_bottom">
 	<h3 class="new">New Feature</h3>
-	<p>Instead of multiple add data buttons, now there is a consolidated Data Source Manager.<br></p>
+	<p>Instead of multiple add data buttons, now there is a consolidated <b>Data Source Manager</b>.<br></p>
 	<img src="images/datamanager.png"/>
 </div>
 
 <div class="slide image_bottom">
-	<p>Let's add our County Boundaries first. They are a vector data file, so select <b>Vector</b>, find your file, & click <b>Add</b>.<br></p>
+	<p>Let's add our County Boundaries first. They are a vector data file, so select <b>Vector</b>,
+		find the CountyBoundaries shapefile, & click <b>Add</b>.<br></p>
 	<img src="images/countiesadd.png"/>
 </div>
 
@@ -220,7 +221,7 @@
 </div>
 
 <div class="slide image_bottom">
-	<p>Click <b>New</b> and enter the <b>Name</b> and <b>URL</b>:
+	<p>Click <b>New</b> and enter a layer <b>Name</b> and the <b>URL</b>:
 	<code>https://map.dfg.ca.gov/arcgis/services/Base_Remote_Sensing/NAIP_2016/ImageServer/WMSServer?</code>
   Click ok.</p>
 	<img src="images/naip.png"/>
@@ -253,10 +254,117 @@
 </div>
 
 <div class="slide image_bottom">
+	<p>Click <b>Apply/Ok</b> and return to the map. We'll add a few more layers before we explore further.</p>
+	<img src="images/projectionmap.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p>Click <b>Apply/Ok</b> and return to the map. We'll add a few more layers before we explore further.</p>
+	<img src="images/projectionmap.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p>Open the <b>Data Source Manager</b> again and go the <b>Raster</b> tab.
+	Find the 2 .hgt files and click <b>Open</b> & then <b>Add</b></p>
+	<img src="images/raster.png"/>
+</div>
+
+<div class="slide image_bottom">
 	<h3 class="new">New Feature</h3>
-	<p>You can now connect live to services from an API!
+	<p>You can now easily connect live to services from an API! We're going to add National Park
+		boundaries direct from the park service.</p>
+	<img src="images/apipark.png"/>
+</div>
+
+<div class="slide black">
+	<p>Check your favorite Open Data portals to see if they have an API that serves standard formats. This way you always have the latest data.</p>
+</div>
+
+<div class="slide image_bottom">
+	<h3 class="new">New Feature</h3>
+	<p>Go to the Vector tab and toggle to <b>Protocol</b>. Set the type to GeoJSON & the URL to:
 	<code>https://opendata.arcgis.com/datasets/4e9a3e5a969a451d9c41b2a0b5981b20_0.geojson</code></p>
 	<img src="images/protocol.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p>Click <b>Add</b> and return to the map. It looks like a mess, but we'll clean that up.</p>
+	<img src="images/mess.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p>Double click the park layer to open <b>Properties</b>. Go to the <b>Source</b> tab & rename
+		the layer.</p>
+	<img src="images/parkfilter.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p>Click <b>Query Builder</b> and add a query for Channel Islands park:
+	<code>"PARKNAME" = 'Channel Islands'</code></p>
+	<img src="images/querybuilder.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<h3 class="new">New Feature</h3>
+	<p>You'll notice there is now a filter symbol next to your park boundary layer. This let's you know
+	you are working with a data subset.</p>
+	<img src="images/filterlayer.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p>Go to <b>Plugins, Manage and install Plugins</b> & search for "osm". Install <b>Quick Map Services</b> (basemaps)
+	& <b>QuickOSM</b> (OpenStreetMap data download).</p>
+	<img src="images/plugins.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p><b>Quick Map Services</b> is found under the <b>Web</b> menu. Add OSM Standard.</p>
+	<img src="images/basemaps.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p><b>Turn off all the layers except your basemap and zoom to the extent of Santa Cruz island.</p>
+	<img src="images/santacruz.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p><b>Click the <b>QuickOSM</b> icon (it looks like a green map). Select key=highway and value=path. Go to
+		<b>Advanced</b> and unselect points & polygons.
+	Click <b>Show query</b>.</p>
+	<img src="images/quickquery.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p>We want paths & tracks. We could run 2 quick queries, but let's use regex to get all trails on the island.
+	 Change "v" to:<br><code>regv=".*"</code>or <code>regv="path|track"</code></p>
+	<img src="images/overpassquery.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p>After you click <b>Run query</b> you will have a temporary layer. Right click on the layer,
+		<b>Export, Save feature as</b>.</p>
+	<img src="images/saveas.png"/>
+</div>
+
+<div class="slide black">
+	<p>We're going to save as geopackage. A geopackage is an open data format that uses a SQLite database.</p>
+</div>
+
+<div class="slide black">
+	<p>It's a bit like an Esri geodatabase (but open) and much more powerful than a shapefile.</p>
+</div>
+
+<div class="slide image_bottom">
+	<p>You will enter the geopackage (database) name under <b>File Name</b> (type geopackage) and under <b>Layer Name</b>
+	 name your new layer.</p>
+	<img src="images/saveas.png"/>
+</div>
+
+<div class="slide image_bottom">
+		<h3 class="new">New Feature</h3>
+	<p>Notice at the top in the title bar there is an asterisk before your map name. This means you have
+	unsaved changes. Save now.</p>
+	<img src="images/savereminder.png"/>
 </div>
 
 <div class="slide black">
@@ -301,17 +409,8 @@
 	<img src="images/explode.png"/>
 </div>
 
-<div class="slide black">
-	<p>We're going to save as geopackage. A geopackage is an open data format that uses a SQLite database.</p>
-</div>
-
-<div class="slide black">
-	<p>It's a bit like an Esri geodatabase (but open) and much more powerful than a shapefile.</p>
-</div>
-
 <div class="slide image_bottom">
-	<p>Select the ellipses next to Singlepart and <b>Save to GeoPackage</b>. You will name
-		both the geopackage (database) and the layer.</p>
+	<p>Select the ellipses next to Singlepart and <b>Save to GeoPackage</b>. Save as a new layer in your geopackage.</p>
 	<img src="images/explode2.png"/>
 </div>
 
@@ -334,7 +433,7 @@
 
 <div class="slide image_bottom">
 	<p>Start editing by right clicking on the layer you wish to edit & click <b>Toggle editing</b>.</p>
-	<img src="images/"/>
+	<img src="images/editing.png"/>
 </div>
 
 <div class="slide image_bottom">
@@ -378,9 +477,11 @@
 </div>
 
 <div class="slide image_bottom">
-	<p class="small">Inspiration from:<br><br>
-  > <a target="_blank" href="https://github.com/maptime/postgis-101">https://github.com/maptime/postgis-101</a><br><br>
-	> <a target="_blank" href="http://duspviz.mit.edu/tutorials/intro-postgis.php">http://duspviz.mit.edu/tutorials/intro-postgis.php</a><br><br>
+	<p class="small">Learn more:<br><br>
+  > <a target="_blank" href="https://qgis.org/en/site/forusers/visualchangelog32/">QGIS 3.2 Change Log</a><br>
+	  all the cool new features!<br><br>
+	> <a target="_blank" href="https://docs.qgis.org/testing/en/docs/">Latest documentation</a><br>
+		everything post 2.18 is "testing" because of the huge effort involved in translating to global languages)<br><br>
 	</p>
 </div>
 
