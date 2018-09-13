@@ -462,6 +462,45 @@
 	<img src="images/labelfont.png"/>
 </div>
 
+<div class="slide image_bottom">
+	<p>Turn off all layers except the 2 rasters. Go to <b>Raster, Miscellaneous</b> & select <b>Merge</b>.
+	Save the file as .tif. Now we have one terrain layer (you can remove the originals).</p>
+	<img src="images/mergeraster.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p>Zoom to the extents of Santa Cruz island and go
+		to <b>Raster, Extraction</b> & select <b>Clip raster by extent</b>. Click the ellipses for <b>Clipping extent</b>
+	and set to <b>Use layer/canvas extent</b></p>
+	<img src="images/clipraster.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p>Now we have a terain for only the island. Douple click on your clipped terrain and yo open <b>Properties</b>.
+	On the <b>Symbology</b> tab set <b>Render type</b> to singleband pseudocolor.</p>
+	<img src="images/rastersymbol.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p>Double click the color ramp and you can set the colors however you want. For example, I moved the slider
+		for green so only water shows up as blue.</p>
+	<img src="images/colorramp.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<h3 class="new">New Feature</h3>
+	<p>Go to ,<b>View, 3D map view</b>. Click on the wrench & set the Elevation layer to your clipped
+		terrain, <b>Vertical scale</b> to 5, & <b>Map tile resolution</b> to 100px.</p>
+	<img src="images/3dviewoptions.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<h3 class="new">New Feature</h3>
+	<p>Use the mouse wheel and click & drag to navigate the 3D view. Tilt by
+		dragging w/ the scroll wheel pressed (or Shift + arrow keys).</p>
+	<img src="images/3dview.png"/>
+</div>
+
 <div class="slide black">
 	<p>Task 3: Analyze data<br></p>
 </div>
@@ -486,6 +525,55 @@
 </div>
 
 <div class="slide image_bottom">
+	<p>Let's do some processing! Go to <b>Processing, Graphical Modeler</b>. We're going to create a model that buffers our trails
+		at different widths.</p>
+	<img src="images/model.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p>Under <b>Inputs</b> select <b>Vector layer</b>. Creae a parameter named Trails of geometry type line.</p>
+	<img src="images/model.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<h3 class="new">New Feature</h3>
+	<p>Under <b>Algorithms</b> search for & select <b>Feature Filter</b>. Click the square with green icon to add 2 outputs, Path & Track.
+	<code>"highway"='path'</code><code>"highway"='track'</code></p>
+	<img src="images/featurefilter.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p>Under <b>Algorithms</b> search for & select <b>Buffer</b>. Set the <b>Description</b> & pick your Path filter as your <b>Input layer</b>.</p>
+	<img src="images/buffer.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p>Under <b>Algorithms</b> search for & select <b>Buffer</b>. Set the <b>Description</b> & pick your Path filter as your <b>Input layer</b>.</p>
+	<img src="images/buffer.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p>Do the same thing for your Tracks, but change the <b>Distance</b> to 20. Don't forget to set the <b>Description</b>.</p>
+	<img src="images/buffertracks.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p>Under <b>Algorithms</b> search for & select <b>Load layer into project</b>. Set the Layer to your Buffer output & give it a <b>Loaded layer name</b>
+	 that matches wht you want in your map.</p>
+	<img src="images/loadlayer.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p>Repeat the loaded layer for the tracks buffer. Give the model a <b>Name, Group<b> & save. Then click the run icon.</p>
+	<img src="images/model.png"/>
+</div>
+
+<div class="slide image_bottom">
+	<p>We now have 2 buffers in the map! If you search in your Processing toolbox, your custom tool will be available for you to run again.</p>
+	<img src="images/customtool.png"/>
+</div>
+
+<div class="slide image_bottom">
 	<h3 class="new">New Feature</h3>
 	<p>You can have fields auto-update based on an expression. Create an update field and set default to <code class="code">now()</code></p>
 	<img src="images/autoupdate.png"/>
@@ -499,8 +587,10 @@
 	<p class="small">Learn more:<br><br>
   > <a target="_blank" href="https://qgis.org/en/site/forusers/visualchangelog32/">QGIS 3.2 Change Log</a><br>
 	  all the cool new features!<br><br>
+		> <a target="_blank" href="https://qgis.org/en/site/forusers/visualchangelog30/index.html">QGIS 3.0 Change Log</a><br>
+		  a major update<br><br>
 	> <a target="_blank" href="https://docs.qgis.org/testing/en/docs/">Latest documentation</a><br>
-		everything post 2.18 is "testing" because of the huge effort involved in translating to global languages)<br><br>
+		everything post 2.18 is "testing" because of the huge effort involved in translating to global languages<br><br>
 	</p>
 </div>
 
