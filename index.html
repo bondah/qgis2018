@@ -50,7 +50,7 @@
 			line-height: 60px;
 			font-weight: bold;
 			text-align: left;
-			color: #353535;
+			color: #444444;
 			margin: 15px 15px 15px 15px;
 			width: 95%;
 			-webkit-touch-callout: none;
@@ -120,14 +120,14 @@
 			background-color: rgba(255,255,255,.75);
 		}
 		b{
-			color: black;
+			color: #000000;
 		}
 		code {
 			  display: inline-block;
 		    border-radius: 5px;
 		    -moz-border-radius: 5px;
 		    -webkit-border-radius: 5px;
-		    border: 1px solid #BCBEC0;
+		    border: 1px solid #510000;
 		    padding: 2px;
 				margin: 10px;
 				word-break: break-all;
@@ -259,12 +259,7 @@
 </div>
 
 <div class="slide image_bottom">
-	<p>Click <b>Apply/Ok</b> and return to the map. We'll add a few more layers before we explore further.</p>
-	<img src="images/projectionmap.png"/>
-</div>
-
-<div class="slide image_bottom">
-	<p>Open the <b>Data Source Manager</b> again and go the <b>Raster</b> tab.
+	<p>Open the <b>Data Source Manager</b> again and go to the <b>Raster</b> tab.
 	Find the 2 .hgt files and click <b>Open</b> & then <b>Add</b></p>
 	<img src="images/raster.png"/>
 </div>
@@ -476,7 +471,7 @@
 </div>
 
 <div class="slide image_bottom">
-	<p>Now we have a terain for only the island. Douple click on your clipped terrain and yo open <b>Properties</b>.
+	<p>Now we have a terrain for only the island. Douple click on your clipped terrain to open <b>Properties</b>.
 	On the <b>Symbology</b> tab set <b>Render type</b> to singleband pseudocolor.</p>
 	<img src="images/rastersymbol.png"/>
 </div>
@@ -531,7 +526,7 @@
 </div>
 
 <div class="slide image_bottom">
-	<p>Under <b>Inputs</b> select <b>Vector layer</b>. Creae a parameter named Trails of geometry type line.</p>
+	<p>Under <b>Inputs</b> select <b>Vector layer</b>. Create a parameter named Trails of geometry type line.</p>
 	<img src="images/model.png"/>
 </div>
 
@@ -548,23 +543,17 @@
 </div>
 
 <div class="slide image_bottom">
-	<p>Under <b>Algorithms</b> search for & select <b>Buffer</b>. Set the <b>Description</b> & pick your Path filter as your <b>Input layer</b>.</p>
-	<img src="images/buffer.png"/>
-</div>
-
-<div class="slide image_bottom">
 	<p>Do the same thing for your Tracks, but change the <b>Distance</b> to 20. Don't forget to set the <b>Description</b>.</p>
 	<img src="images/buffertracks.png"/>
 </div>
 
 <div class="slide image_bottom">
-	<p>Under <b>Algorithms</b> search for & select <b>Load layer into project</b>. Set the Layer to your Buffer output & give it a <b>Loaded layer name</b>
-	 that matches wht you want in your map.</p>
+	<p>Under <b>Algorithms</b> search for & select <b>Load layer into project</b>. Set the Layer to your Buffer output & give it a <b>Loaded layer name</b>.</p>
 	<img src="images/loadlayer.png"/>
 </div>
 
 <div class="slide image_bottom">
-	<p>Repeat the loaded layer for the tracks buffer. Give the model a <b>Name, Group<b> & save. Then click the run icon.</p>
+	<p>Repeat the loaded layer for the tracks buffer. Give the model a <b>Name, Group</b> & then save. Then click the run icon.</p>
 	<img src="images/model.png"/>
 </div>
 
